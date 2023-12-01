@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: url('2.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      font-family: '华文楷体', 'times new roman';
+    }
+
+    #sidebar {
+      width: 150px;
+      background: #333;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 20px;
+      position: relative;
+      animation: fadeIn 2s ease-in-out; /* Apply fadeIn animation */
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      background: #555;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+      animation: fadeIn 2s ease-in-out; /* Apply fadeIn animation */
+    }
+
+    .shape {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-size: cover; /* Adjusted to 'contain' */
+      background-repeat: no-repeat; /* Added to prevent repetition */
+    }
+
+	
+	.box:nth-child(1) .shape {
+      background-image: url('1.jpg');
+    }
+	
+	.box:nth-child(2) .shape {
+      background-image: url('3.jpg');
+    }
+	
+	.box:nth-child(3) .shape {
+      background-image: url('4.jpg');
+    }
+
+    .button {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1em;
+    }
+
+    h1 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      text-align: center;
+      font-size: 2em;
+      z-index: 1;
+      animation: fadeIn 2s ease-in-out; /* Apply fadeIn animation */
+    }
+
+    /* Add styles for the expanding menus */
+    .expanding-menu {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 90vh;
+      width: 30vw;
+      background: rgba(0, 0, 0, 0.7);
+      border-top-left-radius: 15px;
+      border-bottom-left-radius: 15px;
+      transform: translateX(100%);
+      transition: transform 0.5s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 20px;
+      z-index: 2;
+      animation: fadeIn 2s ease-in-out; /* Apply fadeIn animation */
+    }
+	
+
+    /* Add styles for menu items */
+    .menu-item {
+      color: #fff;
+      font-size: 15px;
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
+	
+	.menu-item a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #333;
+      color: #fff;
+      text-align: center;
+      font-size: 10px;
+      padding: 5px;
+      animation: fadeIn 2s ease-in-out; /* Apply fadeIn animation */
+    }
+  </style>
+</head>
+<body>
+  <div id="sidebar">
+    <div class="box" onclick="toggleMenu('expanding-menu-1')">
+      <div class="shape"></div>
+      <div class="button">前沿</div>
+    </div>
+    <div class="box" onclick="toggleMenu('expanding-menu-2')">
+      <div class="shape"></div>
+      <div class="button">课程</div>
+    </div>
+	<div class="box" onclick="toggleMenu('expanding-menu-3')">
+      <div class="shape"></div>
+      <div class="button">大模型</div>
+    </div>
+  </div>
+
+  <div id="expanding-menu-1" class="expanding-menu">
+    <div class="menu-item"></div>
+    <!-- Add more menu items for 前沿 as needed -->
+  </div>
+
+  <div id="expanding-menu-2" class="expanding-menu">
+    <div class="menu-item"><a href="https://github.com/PacktPublishing/Hands-On-Graph-Neural-Networks-Using-Python/tree/main" target="_blank">Python图神经网络教程（作者：Packet）</a></div>
+    <!-- Add more menu items for 课程 as needed -->
+  </div>
+  
+  <div id="expanding-menu-3" class="expanding-menu">
+    <div class="menu-item"></div>
+    <!-- Add more menu items for 前沿 as needed -->
+  </div>
+
+  <h1>人工智能</h1>
+
+  <footer>
+    &copy;2023 RRHG All rights reserved 
+  </footer>
+
+  <script>
+  function toggleMenu(menuId) {
+    const menu = document.getElementById(menuId);
+    const allMenus = document.querySelectorAll('.expanding-menu');
+
+    allMenus.forEach((otherMenu) => {
+      if (otherMenu.id !== menuId) {
+        otherMenu.style.transform = 'translateX(100%)';
+      }
+    });
+
+    menu.style.transform = menu.style.transform === 'translateX(100%)' ? 'translateX(0)' : 'translateX(100%)';
+  }
+</script>
+
+</body>
+</html>
+
